@@ -1,5 +1,5 @@
 {
-  "name": "vue-chartjs",
+  "name": "vue-chartjs-reactive",
   "version": "3.3.2",
   "description": "Vue.js wrapper for chart.js for creating beautiful charts.",
   "author": "Jakub Juszczak <jakub@posteo.de>",
@@ -24,10 +24,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:apertureless/vue-chartjs.git"
+    "url": "git+ssh://git@github.com:w3cj/vue-chartjs.git"
   },
   "bugs": {
-    "url": "https://github.com/apertureless/vue-chartjs/issues"
+    "url": "https://github.com/w3cj/vue-chartjs/issues"
   },
   "keywords": [
     "ChartJs",

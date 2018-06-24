@@ -72,7 +72,10 @@ export const reactiveData = {
   },
 
   watch: {
-    'chartData': dataHandler
+    'chartData': {
+      handler: dataHandler,
+      deep: true
+    }
   }
 }
 
@@ -83,7 +86,10 @@ export const reactiveProp = {
     }
   },
   watch: {
-    'chartData': dataHandler
+    'chartData': {
+      handler: dataHandler,
+      deep: true
+    }
   }
 }
 

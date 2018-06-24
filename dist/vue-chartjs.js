@@ -184,7 +184,10 @@ var reactiveData = {
     };
   },
   watch: {
-    'chartData': dataHandler
+    'chartData': {
+      handler: dataHandler,
+      deep: true
+    }
   }
 };
 var reactiveProp = {
@@ -194,7 +197,10 @@ var reactiveProp = {
     }
   },
   watch: {
-    'chartData': dataHandler
+    'chartData': {
+      handler: dataHandler,
+      deep: true
+    }
   }
 };
 /* harmony default export */ __webpack_exports__["a"] = ({
