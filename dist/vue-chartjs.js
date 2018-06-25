@@ -118,38 +118,65 @@ var VueCharts = {
 "use strict";
 /* unused harmony export reactiveData */
 /* unused harmony export reactiveProp */
+function _watchChartData() {
+  var _this = this;
+
+  var firstWatch = true;
+  this._unWatchChartData = this.$watch('chartData', function () {
+    if (firstWatch) {
+      firstWatch = false;
+    } else {
+      dataHandler.call(_this);
+    }
+  }, {
+    deep: true
+  });
+}
+
 function dataHandler() {
-  if (this.$data._chart) {
-    this.$data._chart.update();
-  } else {
+  if (!this.$data._chart) {
     this.renderChart(this.chartData, this.options);
+  } else if (!this._updatingChart) {
+    this._unWatchChartData();
+
+    this.$data._chart.update();
+
+    this._watchChartData();
   }
 }
 
 var reactiveData = {
   data: function data() {
     return {
+      _unWatchChartData: null,
+      _updatingChart: false,
       chartData: null
     };
   },
-  watch: {
-    'chartData': {
-      handler: dataHandler,
-      deep: true
-    }
+  mounted: function mounted() {
+    this._watchChartData();
+  },
+  methods: {
+    _watchChartData: _watchChartData
   }
 };
 var reactiveProp = {
+  data: function data() {
+    return {
+      _unWatchChartData: null,
+      _updatingChart: false
+    };
+  },
   props: {
     chartData: {
       required: true
     }
   },
-  watch: {
-    'chartData': {
-      handler: dataHandler,
-      deep: true
-    }
+  mounted: function mounted() {
+    this._watchChartData();
+  },
+  methods: {
+    _watchChartData: _watchChartData
   }
 };
 /* harmony default export */ __webpack_exports__["a"] = ({
